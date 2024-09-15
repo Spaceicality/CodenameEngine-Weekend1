@@ -127,7 +127,7 @@ class FreeplayState extends MusicBeatState
 		add(triangle);
 
 
-		triangleText = new FlxAnimate(00,0,Path.withoutExtension(Paths.image('menus/freeplay/triangle')));//IMPROVE-NOTE use better path 
+		triangleText = new FlxAnimate(0,0,Path.withoutExtension(Paths.image('menus/freeplay/triangle')));//IMPROVE-NOTE use better path 
 		triangleText.anim.play('BOYFRIEND ch backing');
 		add(triangleText);
 		
