@@ -6,10 +6,12 @@ import haxe.io.Path;
 import openfl.text.TextField;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import funkin.backend.FlxAnimate;
 import lime.utils.Assets;
 import funkin.game.HealthIcon;
 import funkin.savedata.FunkinSave;
 import funkin.backend.scripting.events.*;
+import openfl.display.BlendMode;
 
 using StringTools;
 
@@ -78,10 +80,15 @@ class FreeplayState extends MusicBeatState
 	 */
 	 public var triangleText:FlxSprite;
 
-	 /**
+	/**
 	 * TriangleBeatDark.
 	 */
 	public var triangleBeatDark:FlxSprite;
+
+	/**
+	 * TriangleBeat.
+	 */
+	 public var triangleBeat:FlxSprite;
 
 	/**
 	 * TriangleGlow.
