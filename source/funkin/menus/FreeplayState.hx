@@ -14,7 +14,6 @@ import funkin.backend.scripting.events.*;
 import openfl.filters.GlowFilter;
 import openfl.display.BlendMode;
 import flixel.FlxG;
-import backend.utils.CoolUtil;
 
 using StringTools;
 
