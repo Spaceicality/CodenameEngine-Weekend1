@@ -67,9 +67,49 @@ class FreeplayState extends MusicBeatState
 	public var scoreBG:FlxSprite;
 
 	/**
-	 * Background.
+	 * Triangle.
 	 */
-	public var bg:FlxSprite;
+	public var triangle:FlxSprite;
+
+	/**
+	 * TriangleText.
+	 */
+	 public var triangleText:FlxSprite;
+
+	 /**
+	 * TriangleBeatDark.
+	 */
+	public var triangleBeatDark:FlxSprite;
+
+	/**
+	 * TriangleGlow.
+	 */
+	 public var triangleGlow:FlxSprite;
+
+	/**
+	 * bgDad.
+	 */
+	 public var bgDad:FlxSprite;
+
+	/**
+	 * dj.
+	 */
+	 public var dj:FlxSprite;
+
+	/**
+	 * blackBar.
+	 */
+	 public var blackBar:FlxSprite;
+
+	/**
+	 * freeplayText.
+	 */
+	 public var freeplayText:FlxSprite;
+
+	/**
+	 * ostName.
+	 */
+	 public var ostName:FlxSprite;
 
 	/**
 	 * Whenever the player can navigate and select
