@@ -13,6 +13,8 @@ import funkin.backend.scripting.events.*;
 
 using StringTools;
 
+var realScaled = 0.8;//stuff from og freeplay
+
 class FreeplayState extends MusicBeatState
 {
 	/**
@@ -289,8 +291,11 @@ class FreeplayState extends MusicBeatState
 		changeSelection(0, true);
 		changeDiff(0, true);
 		changeCoopMode(0, true);
+	}
 
-		interpColor = new FlxInterpolateColor(bg.color);
+	function djPlayAnim(name,offsetX,offsetY){
+		dj.anim.play(name,true);
+		dj.offset.set(offsetX,offsetY);
 	}
 
 	#if PRELOAD_ALL
@@ -351,7 +356,6 @@ class FreeplayState extends MusicBeatState
 		diffText.x = Std.int(scoreBG.x + ((scoreBG.width - diffText.width) / 2));
 
 		interpColor.fpsLerpTo(songs[curSelected].parsedColor, 0.0625);
-		bg.color = interpColor.color;
 
 		#if PRELOAD_ALL
 		var dontPlaySongThisFrame = false;
