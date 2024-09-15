@@ -123,39 +123,39 @@ class FreeplayState extends MusicBeatState
 		// LOAD CHARACTERS
 
 		//left bg
-		triangle = new FlxSprite().loadGraphic(Paths.image('freeplay/triangle'));
+		triangle = new FlxSprite().loadGraphic(Paths.image('menus/freeplay/triangle'));
 		add(triangle);
 
 
-		triangleText = new FlxAnimate(00,0,Path.withoutExtension(Paths.image('freeplay/triangle')));//IMPROVE-NOTE use better path 
+		triangleText = new FlxAnimate(00,0,Path.withoutExtension(Paths.image('menus/freeplay/triangle')));//IMPROVE-NOTE use better path 
 		triangleText.anim.play('BOYFRIEND ch backing');
 		add(triangleText);
 		
-		triangleBeatDark = new FlxSprite(0,381).loadGraphic(Paths.image('freeplay/beatdark'));
+		triangleBeatDark = new FlxSprite(0,381).loadGraphic(Paths.image('menus/freeplay/beatdark'));
 		triangleBeatDark.blend = BlendMode.MULTIPLY;
 		triangleBeatDark.x = (triangle.width-200)/2-triangleBeatDark.width/2;
 		triangleBeatDark.alpha = 0;
 		add(triangleBeatDark);
 
-		triangleBeat = new FlxSprite(0,326).loadGraphic(Paths.image('freeplay/beatglow'));
+		triangleBeat = new FlxSprite(0,326).loadGraphic(Paths.image('menus/freeplay/beatglow'));
 		triangleBeat.blend = BlendMode.ADD;
 		triangleBeat.x = (triangle.width-200)/2-triangleBeat.width/2;
 		add(triangleBeat);
 
-		triangleGlow = new FlxSprite(-30, -30).loadGraphic(Paths.image('freeplay/triangleGlow'));
+		triangleGlow = new FlxSprite(-30, -30).loadGraphic(Paths.image('menus/freeplay/triangleGlow'));
 		triangleGlow.blend = BlendMode.ADD;
 		triangleGlow.alpha = 0;
 		add(triangleGlow);
 		
 		//right bg
-		bgDad = new FlxSprite(triangle.width * 0.74, 0).loadGraphic(Paths.image('freeplay/bg'));
+		bgDad = new FlxSprite(triangle.width * 0.74, 0).loadGraphic(Paths.image('menus/freeplay/bg'));
 		bgDad.setGraphicSize(0, FlxG.height);
 		bgDad.updateHitbox();
 		bgDad.antialiasing = true;
 		add(bgDad);
 		
 		//DJ CODE, NOTE ITS NAMED "DJ" NOT BOYFRIEND BC IT CHANGES BETWEEN PICO AND BF 
-		dj = new FlxAnimate(640, 366,Path.withoutExtension(Paths.image('freeplay/freeplay-boyfriend')));//IMPROVE-NOTE use better path 
+		dj = new FlxAnimate(640, 366,Path.withoutExtension(Paths.image('menus/freeplay/freeplay-boyfriend')));//IMPROVE-NOTE use better path 
 		djPlayAnim('Boyfriend DJ',0,0);
 		dj.antialiasing = true;
 		add(dj);
@@ -185,7 +185,7 @@ class FreeplayState extends MusicBeatState
 			add(capsuleGroup);
 
 			var capsule:FlxSprite = new FlxSprite(0,0);
-			capsule.frames = Paths.getSparrowAtlas('freeplay/freeplayCapsule');
+			capsule.frames = Paths.getSparrowAtlas('menus/freeplay/freeplayCapsule');
 			capsule.animation.addByPrefix('selected', 'mp3 capsule w backing0', 24);
 			capsule.animation.addByPrefix('unselected', 'mp3 capsule w backing NOT SELECTED', 24);	
 			capsule.animation.play('selected');
@@ -207,7 +207,7 @@ class FreeplayState extends MusicBeatState
 			];
 			capsuleGroup.add(text);
 
-			var pixelIcon = new FlxSprite(160, 35).loadGraphic(Paths.image('freeplay/icons/'+song.icon));
+			var pixelIcon = new FlxSprite(160, 35).loadGraphic(Paths.image('menus/freeplay/icons/'+song.icon));
 			pixelIcon.scale.x = pixelIcon.scale.y = 2;
 			pixelIcon.antialiasing = false;
 			pixelIcon.active = false;
