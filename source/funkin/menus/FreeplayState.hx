@@ -122,11 +122,43 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		bg = new FlxSprite(0, 0).loadAnimatedGraphic(Paths.image('menus/menuDesat'));
-		if (songs.length > 0)
-			bg.color = songs[0].color;
-		bg.antialiasing = true;
-		add(bg);
+		//left bg
+		triangle = new FlxSprite().loadGraphic(Paths.image('freeplay/triangle'));
+		add(triangle);
+
+
+		triangleText = new FlxAnimate(00,0,Path.withoutExtension(Paths.image('freeplay/triangle')));//IMPROVE-NOTE use better path 
+		triangleText.anim.play('BOYFRIEND ch backing');
+		add(triangleText);
+		
+		triangleBeatDark = new FlxSprite(0,381).loadGraphic(Paths.image('freeplay/beatdark'));
+		triangleBeatDark.blend = BlendMode.MULTIPLY;
+		triangleBeatDark.x = (triangle.width-200)/2-triangleBeatDark.width/2;
+		triangleBeatDark.alpha = 0;
+		add(triangleBeatDark);
+
+		triangleBeat = new FlxSprite(0,326).loadGraphic(Paths.image('freeplay/beatglow'));
+		triangleBeat.blend = BlendMode.ADD;
+		triangleBeat.x = (triangle.width-200)/2-triangleBeat.width/2;
+		add(triangleBeat);
+
+		triangleGlow = new FlxSprite(-30, -30).loadGraphic(Paths.image('freeplay/triangleGlow'));
+		triangleGlow.blend = BlendMode.ADD;
+		triangleGlow.alpha = 0;
+		add(triangleGlow);
+		
+		//right bg
+		bgDad = new FlxSprite(triangle.width * 0.74, 0).loadGraphic(Paths.image('freeplay/bg'));
+		bgDad.setGraphicSize(0, FlxG.height);
+		bgDad.updateHitbox();
+		bgDad.antialiasing = true;
+		add(bgDad);
+		
+		//DJ CODE, NOTE ITS NAMED "DJ" NOT BOYFRIEND BC IT CHANGES BETWEEN PICO AND BF 
+		dj = new FlxAnimate(640, 366,Path.withoutExtension(Paths.image('freeplay/freeplay-boyfriend')));//IMPROVE-NOTE use better path 
+		djPlayAnim('Boyfriend DJ',0,0);
+		dj.antialiasing = true;
+		add(dj);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
