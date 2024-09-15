@@ -163,24 +163,71 @@ class FreeplayState extends MusicBeatState
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
+		//random button
+		songs.unshift({
+			name:'random',
+			displayName:'Random',
+			bpm:100,
+			beatsPerMeasure:4,
+			stepsPerBeat:4,
+			needVoices:false,
+			icon:'bf',
+			color: 0xFFFFFFFF,
+			parsedColor: 0xFFFFFFFF,
+			difficulties:['easy','hard','normal'],
+			coopAllowed:false,
+			opponentModeAllowed:false
+		});
+
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].displayName, true, false);
-			songText.isMenuItem = true;
-			songText.targetY = i;
-			grpSongs.add(songText);
+			var capsuleGroup:FlxSpriteGroup = new FlxSpriteGroup();
+			add(capsuleGroup);
 
-			var icon:HealthIcon = new HealthIcon(songs[i].icon);
-			icon.sprTracker = songText;
+			var capsule:FlxSprite = new FlxSprite(0,0);
+			capsule.frames = Paths.getSparrowAtlas('freeplay/freeplayCapsule');
+			capsule.animation.addByPrefix('selected', 'mp3 capsule w backing0', 24);
+			capsule.animation.addByPrefix('unselected', 'mp3 capsule w backing NOT SELECTED', 24);	
+			capsule.animation.play('selected');
+			capsule.antialiasing = true;
+			capsule.scale.set(realScaled,realScaled);
+			capsuleGroup.add(capsule);
 
-			// using a FlxGroup is too much fuss!
-			iconArray.push(icon);
-			add(icon);
+			var titleTextBlur = new FlxText(capsule.width * 0.26, 45,0, song.displayName, Std.int(40 * realScaled));
+			titleTextBlur.font = "5by7";
+			titleTextBlur.color = 0xFF00ccff;
+			titleTextBlur.shader = new CustomShader('GaussianBlurShader');
+			//IMPROVE-NOTE something something low quailty option
+			capsuleGroup.add(titleTextBlur);
 
-			// songText.x += 40;
-			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
-			// songText.screenCenter(X);
+			var text = new FlxText(capsule.width * 0.26, 45,0,song.displayName, Std.int(40 * realScaled));
+			text.font = Paths.font("5by7.ttf");
+			text.textField.filters = [
+				new GlowFilter(0x00ccff, 1, 5, 5, 210, 2/*BitmapFilterQuality.MEDIUM*/),
+			];
+			capsuleGroup.add(text);
+
+			var pixelIcon = new FlxSprite(160, 35).loadGraphic(Paths.image('freeplay/icons/'+song.icon));
+			pixelIcon.scale.x = pixelIcon.scale.y = 2;
+			pixelIcon.antialiasing = false;
+			pixelIcon.active = false;
+			pixelIcon.origin.x = song.icon == 'parents-christmas' ? 140 : 100;
+			pixelIcon.visible = song.name != 'random';//hide it DONT remove it
+			capsuleGroup.add(pixelIcon);
+
+			capsules.push(capsuleGroup);
 		}
+
+		//bar
+		blackBar = new FlxSprite().makeGraphic(FlxG.width, 64, 0xFF000000);
+		add(blackBar);
+			
+		freeplayText = new FlxText(8, 8, 0, 'FREEPLAY', 48);
+		add(freeplayText);
+		
+		ostName = new FlxText(8, 8, FlxG.width - 8 - 8, 'OFFICIAL OST', 48);//should make this change
+		ostName.alignment = "right";
+		add(ostName);
 
 		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
