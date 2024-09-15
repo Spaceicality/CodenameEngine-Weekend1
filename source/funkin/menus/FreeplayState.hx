@@ -13,7 +13,6 @@ import funkin.savedata.FunkinSave;
 import funkin.backend.scripting.events.*;
 import openfl.filters.GlowFilter;
 import openfl.display.BlendMode;
-import flixel.FlxGroup;
 
 using StringTools;
 
