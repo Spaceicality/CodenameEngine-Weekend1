@@ -11,6 +11,7 @@ import lime.utils.Assets;
 import funkin.game.HealthIcon;
 import funkin.savedata.FunkinSave;
 import funkin.backend.scripting.events.*;
+import openfl.filters.GlowFilter;
 import openfl.display.BlendMode;
 
 using StringTools;
@@ -78,7 +79,7 @@ class FreeplayState extends MusicBeatState
 	/**
 	 * TriangleText.
 	 */
-	 public var triangleText:FlxSprite;
+	 public var triangleText:FlxAnimate;
 
 	/**
 	 * TriangleBeatDark.
@@ -103,7 +104,7 @@ class FreeplayState extends MusicBeatState
 	/**
 	 * dj.
 	 */
-	 public var dj:FlxSprite;
+	 public var dj:FlxAnimate;
 
 	/**
 	 * blackBar.
@@ -118,7 +119,12 @@ class FreeplayState extends MusicBeatState
 	/**
 	 * ostName.
 	 */
-	 public var ostName:FlxSprite;
+	 public var ostName:FlxText;
+
+	/**
+	 * ostName.
+	 */
+	 public var capsules:Array<FlxSpriteGroup> = [];
 
 	/**
 	 * Whenever the player can navigate and select
